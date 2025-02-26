@@ -80,7 +80,7 @@ class PropertiesResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // RelationManagers\BookingsRelationManager::class, // Relation avec les réservations
+            RelationManagers\BookingsRelationManager::class, // Relation avec les réservations
         ];
     }
 

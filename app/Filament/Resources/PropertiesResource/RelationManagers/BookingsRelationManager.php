@@ -5,18 +5,22 @@ use App\Models\Bookings;
 use App\Models\Properties;
 use App\Models\User;
 use Filament\Forms;
-use Filament\Resources\RelationManager;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\RelationManagers\HasManyRelationManager;
-;
+use Filament\Forms\Form;
 use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BookingsRelationManager 
+
+class BookingsRelationManager extends RelationManager
 {
     protected static string $relationship = 'bookings'; // Le nom de la relation
 
     protected static string $primaryColumn = 'id'; // La clé primaire de la table bookings
 
-    public static function table(Tables\Table $table): Tables\Table
+    public  function table(Tables\Table $table): Tables\Table
     {
         return $table
             ->columns([
@@ -38,7 +42,7 @@ class BookingsRelationManager
             ]);
     }
 
-    public static function form(Forms\Form $form): Forms\Form
+    public  function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
